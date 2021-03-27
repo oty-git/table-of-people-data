@@ -1,17 +1,31 @@
 <template>
   <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+  <TableOfPeopleData
+      :people_data="PEOPLE" />
   </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+import {mapActions, mapGetters} from "vuex";
+import TableOfPeopleData from "./components/TableOfPeopleData";
 
 export default {
   name: 'App',
   components: {
-    HelloWorld
+    TableOfPeopleData
+  },
+  methods: {
+    ...mapActions([
+        "GET_API_PEOPLE"
+    ])
+  },
+  computed: {
+    ...mapGetters([
+        "PEOPLE"
+    ])
+  },
+  mounted() {
+    this.GET_API_PEOPLE()
   }
 }
 </script>
@@ -23,6 +37,6 @@ export default {
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
-  margin-top: 60px;
+  margin-top: 10px;
 }
 </style>
