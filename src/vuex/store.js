@@ -16,6 +16,9 @@ const store = new Vuex.Store({
       const indexOfItem = state.people.indexOf(item);
       state.people.splice(indexOfItem, 1);
     },
+    CREATE_NEW_USER: (state, newUser) => {
+      state.people.push(newUser);
+    },
   },
   actions: {
     GET_API_PEOPLE({ commit }) {
@@ -34,6 +37,9 @@ const store = new Vuex.Store({
     },
     DELETE_USER({ commit }, item) {
       commit("REMOVE_USER_FROM_LIST", item);
+    },
+    ADD_USER({ commit }, newUser) {
+      commit("CREATE_NEW_USER", newUser);
     },
   },
   getters: {

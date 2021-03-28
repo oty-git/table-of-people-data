@@ -42,7 +42,7 @@
            :class="{'page__selected': page === pageNumber}"
       >{{page}}</div>
     </div>
-    <CreateUserForm />
+    <CreateUserForm @addUser="addUser"/>
   </div>
 </template>
 
@@ -106,11 +106,14 @@ export default {
       })
     },
     ...mapActions([
-      "DELETE_USER"
+      "DELETE_USER",
+      "ADD_USER"
     ]),
     deleteUser(item) {
-      console.log(item)
       this.DELETE_USER(item)
+    },
+    addUser(newUser) {
+      this.ADD_USER(newUser)
     },
   }
   }
