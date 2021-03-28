@@ -16,7 +16,7 @@
         type="text"
         id="input_surname"
         v-model.trim="surname"
-        placeholder="Surame"
+        placeholder="Surname"
     >
     <label for="input_email">Email:</label>
     <input type="email"
