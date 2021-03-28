@@ -1,8 +1,8 @@
 <template>
   <div id="app">
-  <TableOfPeopleData
+    <TableOfPeopleData
       :people_data="PEOPLE"
-  />
+    />
   </div>
 </template>
 

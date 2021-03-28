@@ -29,10 +29,10 @@
         </i></p>
     </div>
     <TableItem
-      v-for="(item, index) in paginatedPeople"
+      v-for="item in paginatedPeople"
       :key="item.id"
       :item_data="item"
-      @deleteUser="deleteUser(index)"
+      @deleteUser="deleteUser(item)"
     />
     <div class="pagination">
       <div class="page"
@@ -42,17 +42,18 @@
            :class="{'page__selected': page === pageNumber}"
       >{{page}}</div>
     </div>
+    <CreateUserForm />
   </div>
-
 </template>
 
 <script>
 import TableItem from "./TableItem";
+import CreateUserForm from "./CreateUserForm";
 import {mapGetters, mapActions} from "vuex";
 
 export default {
   name: "TableOfPeopleData",
-  components: {TableItem},
+  components: {CreateUserForm, TableItem},
   props: {
   people_data: {
     type: Array,
@@ -107,8 +108,9 @@ export default {
     ...mapActions([
       "DELETE_USER"
     ]),
-    deleteUser(index) {
-      this.DELETE_USER(index)
+    deleteUser(item) {
+      console.log(item)
+      this.DELETE_USER(item)
     },
   }
   }
