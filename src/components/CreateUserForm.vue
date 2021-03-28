@@ -1,14 +1,36 @@
 <template>
 <div>
-  <form class="create-form">
+  <form
+      class="create-form"
+      @submit.prevent="onSubmit"
+  >
     <label for="input_name">Name:</label>
-    <input type="text" id="input_name">
+    <input
+        type="text"
+        id="input_name"
+        v-model.trim="name"
+        placeholder="Name"
+    >
     <label for="input_surname">Surname:</label>
-    <input type="text" id="input_surname">
+    <input
+        type="text"
+        id="input_surname"
+        v-model.trim="surname"
+        placeholder="Surame"
+    >
     <label for="input_email">Email:</label>
-    <input type="text" id="input_email">
+    <input type="email"
+           id="input_email"
+           v-model.trim="email"
+           placeholder="name@domain.com"
+    >
     <label for="input_phone">Phone:</label>
-    <input type="text" id="input_phone">
+    <input
+        type="text"
+        id="input_phone"
+        v-model.trim="phone"
+        placeholder="(111) 1111111"
+    >
     <button class="create-button"
             type="submit"
     >Create user</button>
@@ -18,7 +40,28 @@
 
 <script>
 export default {
-name: "CreateUserForm"
+  name: "CreateUserForm",
+  data() {
+    return {
+      name: "",
+      surname: "",
+      email: "",
+      phone: "",
+    }
+  },
+  methods: {
+    onSubmit() {
+        const newUser = {
+        id: Date.now(),
+        first_name: this.name,
+        last_name: this.surname,
+        email: this.email,
+        phone: this.phone,
+        user_info_date: new Date().toLocaleString().replace('.', '/').split(',')[0].replace('.', '/')
+      }
+      this.$emit("addUser", newUser)
+    },
+  }
 }
 </script>
 
