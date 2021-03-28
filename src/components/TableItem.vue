@@ -15,10 +15,15 @@
     <div class="row reg-data">
       {{item_data.user_info_date}}
     </div>
+    <button
+        class="rembtn"
+        v-on:click="deleteUser"
+    >Delete</button>
   </div>
 </template>
 
 <script>
+
 export default {
   name: "TableItem",
   props: {
@@ -28,7 +33,12 @@ export default {
       return {}
     }
     }
-  }
+  },
+  methods: {
+    deleteUser() {
+      this.$emit("deleteUser")
+    }
+  },
 }
 </script>
 
@@ -43,5 +53,9 @@ export default {
   padding: 4px;
   flex-basis: 20%;
   text-align: left;
+}
+
+.rembtn {
+  background: indianred;
 }
 </style>

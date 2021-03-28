@@ -1,7 +1,8 @@
 <template>
   <div id="app">
   <TableOfPeopleData
-      :people_data="PEOPLE" />
+      :people_data="PEOPLE"
+  />
   </div>
 </template>
 
@@ -17,7 +18,7 @@ export default {
   methods: {
     ...mapActions([
         "GET_API_PEOPLE"
-    ])
+    ]),
   },
   computed: {
     ...mapGetters([
