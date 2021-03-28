@@ -12,6 +12,9 @@ const store = new Vuex.Store({
     SET_PEOPLE_TO_STATE: (state, people) => {
       state.people = people;
     },
+    REMOVE_USER_FROM_LIST: (state, index) => {
+      state.people.splice(index, 1);
+    },
   },
   actions: {
     GET_API_PEOPLE({ commit }) {
@@ -27,6 +30,9 @@ const store = new Vuex.Store({
           console.log(error);
           return error;
         });
+    },
+    DELETE_USER({ commit }, index) {
+      commit("REMOVE_USER_FROM_LIST", index);
     },
   },
   getters: {
